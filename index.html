@@ -33,6 +33,7 @@
         <a href="./aboutme.html">about me</a>
 
         <hr>
+        <h3>tables</h3>
         <p>
             This table is all about sport or activity
             and three columns consists of name of the sport, location, amount of money
@@ -67,6 +68,86 @@
             
 
         </table>
+
+        <hr>
+        <h3>Algorithm</h3>
+
+        <p>
+            A graph is a pictorial representation of a set of objects where some pairs of objects are connected by links. The interconnected objects are represented by points termed as vertices, and the links that connect the vertices are called edges.
+
+            Formally, a graph is a pair of sets (V, E), where V is the set of vertices and E is the set of edges, connecting the pairs of vertices.
+        </p>
+
+        <a href="https://www.tutorialspoint.com/data_structures_algorithms/graph_data_structure.htm">Reference to the above DS algo description</a>
+
+
+        <pre>
+            import java.io.*; 
+import java.util.*; 
+   
+//DFS Technique for undirected graph
+class Graph { 
+    private int Vertices;   // No. of vertices 
+   
+    // adjacency list declaration
+    private LinkedList<Integer> adj_list[]; 
+   
+    // graph Constructor: to initialize adjacency lists as per no of vertices 
+    Graph(int v) { 
+        Vertices = v; 
+        adj_list = new LinkedList[v]; 
+        for (int i=0; i<v; ++i) 
+            adj_list[i] = new LinkedList(); 
+    } 
+   
+    //add an edge to the graph 
+    void addEdge(int v, int w) { 
+        adj_list[v].add(w);  // Add w to v's list. 
+    } 
+   
+    // helper function for DFS technique
+    void DFS_helper(int v,boolean visited[]) { 
+        // current node is visited 
+        visited[v] = true; 
+        System.out.print(v+" "); 
+   
+        // process all adjacent vertices 
+        Iterator<Integer> i = adj_list[v].listIterator(); 
+        while (i.hasNext()) 
+        { 
+            int n = i.next(); 
+            if (!visited[n]) 
+                DFS_helper(n, visited); 
+        } 
+    } 
+   
+    
+void DFS(int v) { 
+        //initially none of the vertices are visited 
+        boolean visited[] = new boolean[Vertices]; 
+   
+        // call recursive DFS_helper function for DFS technique 
+        DFS_helper(v, visited); 
+    } 
+}
+  class Main{
+    public static void main(String args[]) 
+    { 
+        //create a graph object and add edges to it
+        Graph g = new Graph(5); 
+        g.addEdge(0, 1); 
+        g.addEdge(0, 2); 
+        g.addEdge(0, 3); 
+        g.addEdge(1, 2); 
+        g.addEdge(2, 4); 
+        //print the DFS Traversal sequence
+        System.out.println("Depth First Traversal for given graph"+ 
+                           "(with 0 as starting vertex)"); 
+        g.DFS(0); 
+    } 
+}
+        </pre>
+
     
     
 </body>
